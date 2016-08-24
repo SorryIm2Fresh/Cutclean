@@ -89,6 +89,14 @@ public class CutcleanListener
       block.getState().update();
       block.getWorld().dropItemNaturally(block.getLocation(), new ItemStack(Material.FLINT));
     }
+    if (block.getType() == Material.LEAVES)
+    {
+      event.setCancelled(true);
+      blockCrack(event.getPlayer(), block.getLocation(), block.getType());
+      block.setType(Material.AIR);
+      block.getState().update();
+      block.getWorld().dropItemNaturally(block.getLocation(), new ItemStack(Material.APPLE));
+    }
     if (block.getType() == Material.DIAMOND_ORE)
     {
       event.setCancelled(true);
